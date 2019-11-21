@@ -24,8 +24,9 @@ public class OpenWeather {
     @SerializedName("sys")
     private Tiempo tiempo;
 
-//    @SerializedName("timezone")
-//    private TimeZone zonahoraria;
+    @SerializedName("timezone")
+    private long zonahoraria;
+    
     @SerializedName("clouds")
     private Nubes nubes;
 
@@ -56,7 +57,7 @@ public class OpenWeather {
         
         //Solucion temporal para que alcanze la consulta
         try {
-            Thread.sleep(2000l);
+            Thread.sleep(1000l);
         } catch (InterruptedException ex) {
             Logger.getLogger(OpenWeather.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -112,11 +113,14 @@ public class OpenWeather {
         this.nubes = nubes;
     }
 
-//    public TimeZone getZonahoraria() {
-//        return zonahoraria;
-//    }
-//
-//    public void setZonahoraria(TimeZone zonahoraria) {
-//        this.zonahoraria = zonahoraria;
-//    }
+    public long getZonahoraria() {
+        return zonahoraria;
+    }
+
+    public void setZonahoraria(long zonahoraria) {
+        this.zonahoraria = zonahoraria;
+    }
+    
+    
+    
 }
