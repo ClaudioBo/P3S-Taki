@@ -1,13 +1,18 @@
 package mx.itson.taki.entidades;
 
 import com.google.gson.annotations.SerializedName;
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import mx.itson.taki.utilerias.RetrofitUtil;
 import retrofit2.*;
 
 public class OpenWeather {
+
+    @SerializedName("dt")
+    private long fechaAhora;
 
     @SerializedName("name")
     private String ciudad;
@@ -26,42 +31,22 @@ public class OpenWeather {
 
     @SerializedName("timezone")
     private long zonahoraria;
-    
+
     @SerializedName("clouds")
     private Nubes nubes;
 
     public static OpenWeather obtener(String ciudad) {
 
-        OpenWeather ret = new OpenWeather();
+        OpenWeather ret = null;
 
         Call<OpenWeather> llamada = RetrofitUtil.getApi().getClima(ciudad, "4439bd707b540e8ae62dafc87bc966c3", "metric");
-        llamada.enqueue(new Callback<OpenWeather>() {
-            @Override
-            public void onResponse(Call<OpenWeather> call, Response<OpenWeather> rspns) {
-                if (rspns.isSuccessful()) {
-                    OpenWeather o = rspns.body();
-                    ret.setCiudad(o.getCiudad());
-                    ret.setClima(o.getClima());
-                    ret.setInfo(o.getInfo());
-                    ret.setNubes(o.getNubes());
-                    ret.setTiempo(o.getTiempo());
-                    ret.setViento(o.getViento());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<OpenWeather> call, Throwable thrwbl) {
-                thrwbl.printStackTrace();
-            }
-        });
-        
-        //Solucion temporal para que alcanze la consulta
         try {
-            Thread.sleep(1000l);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(OpenWeather.class.getName()).log(Level.SEVERE, null, ex);
+            ret = llamada.execute().body();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        
+
         return ret;
     }
 
@@ -120,7 +105,13 @@ public class OpenWeather {
     public void setZonahoraria(long zonahoraria) {
         this.zonahoraria = zonahoraria;
     }
-    
-    
-    
+
+    public long getFechaAhora() {
+        return fechaAhora;
+    }
+
+    public void setFechaAhora(long fechaAhora) {
+        this.fechaAhora = fechaAhora;
+    }
+
 }

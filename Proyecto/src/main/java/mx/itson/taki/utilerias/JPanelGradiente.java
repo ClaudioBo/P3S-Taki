@@ -25,7 +25,6 @@ public class JPanelGradiente extends JPanel {
 
     }
 
-
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -42,7 +41,7 @@ public class JPanelGradiente extends JPanel {
     }
 
     public void actualizar() {
-        paint(getGraphics());
+        paintComponent(getGraphics());
     }
 
     public Color getColor1() {
