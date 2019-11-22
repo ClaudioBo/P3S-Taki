@@ -68,6 +68,7 @@ public class Acciones {
         }
     }
 
+    //Culo
     public void mostrarInformacion() {
         lblUbicacion.setText(cargado.getCiudad() + " " + cargado.getTiempo().getCountry());
         lblTemp.setText(cargado.getInfo().getTemp() + "");
