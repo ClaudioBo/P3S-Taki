@@ -1,11 +1,17 @@
 package mx.itson.taki.entidades;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Informacion {
 
     private double temp;
     private int pressure;
     private int humidity;
+    
+    @SerializedName("temp_min")
     private double tempMin;
+    
+    @SerializedName("temp_max")
     private double tempMax;
 
     public double getTemp() {
