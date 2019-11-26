@@ -125,7 +125,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="acc = new Acciones(this);&#xa;acc.txtInput = txtInput;&#xa;acc.lblUbicacion = lblUbicacion;&#xa;acc.lblTemp = lblTemp;&#xa;acc.lblMedida = lblMedida;&#xa;acc.icono = icono;&#xa;acc.lblEstado = lblEstado;&#xa;acc.lblPresion = lblPresion;&#xa;acc.lblViento = lblViento;&#xa;acc.lblHumedad = lblHumedad;&#xa;acc.lblDireccion = lblDireccion;&#xa;acc.lblMinTemp = lblMinTemp;&#xa;acc.lblMaxTemp = lblMaxTemp;&#xa;acc.lblNubes = lblNubes;&#xa;acc.lblHoraLocal = lblHoraLocal;&#xa;acc.lblZonaHoraria = lblZonaHoraria;&#xa;acc.lblSalidaSol = lblSalidaSol;&#xa;acc.lblPuestaSol = lblPuestaSol;"/>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="acc = new mx.itson.taki.acciones.Accion(this);&#xa;acc.txtInput = txtInput;&#xa;acc.lblUbicacion = lblUbicacion;&#xa;acc.lblTemp = lblTemp;&#xa;acc.lblMedida = lblMedida;&#xa;acc.icono = icono;&#xa;acc.lblEstado = lblEstado;&#xa;acc.lblPresion = lblPresion;&#xa;acc.lblViento = lblViento;&#xa;acc.lblHumedad = lblHumedad;&#xa;acc.lblDireccion = lblDireccion;&#xa;acc.lblMinTemp = lblMinTemp;&#xa;acc.lblMaxTemp = lblMaxTemp;&#xa;acc.lblNubes = lblNubes;&#xa;acc.lblHoraLocal = lblHoraLocal;&#xa;acc.lblZonaHoraria = lblZonaHoraria;&#xa;acc.lblSalidaSol = lblSalidaSol;&#xa;acc.lblPuestaSol = lblPuestaSol;"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

@@ -1,11 +1,11 @@
 package mx.itson.taki.presentacion;
 
 import java.awt.Color;
-import mx.itson.taki.acciones.Acciones;
+import mx.itson.taki.acciones.Accion;
 
 public class Main extends javax.swing.JFrame {
 
-    Acciones acc;
+    Accion acc;
 
     public Main() {
         initComponents();
@@ -273,7 +273,7 @@ public class Main extends javax.swing.JFrame {
         pnlInformacion.add(lblZonaHoraria, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, -1, -1));
 
         getContentPane().add(pnlInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 63, 799, 386));
-        acc = new Acciones(this);
+        acc = new Accion(this);
         acc.txtInput = txtInput;
         acc.lblUbicacion = lblUbicacion;
         acc.lblTemp = lblTemp;
