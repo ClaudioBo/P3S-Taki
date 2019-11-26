@@ -50,17 +50,14 @@ public class Accion {
     }
 
     /**
-     * Al memento de aplastar el boton se rescatara la informacion de openwheater de la ciudad que se ingreso.
+     * Al memento de aplastar el boton se rescatara la informacion de
+     * openwheater de la ciudad que se ingreso.
      */
     public void apretarBoton() {
-        try {
-            Thread.sleep(500l);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Accion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
         if (txtInput.getText().length() > 3) {
+            //Guarda en la variable 'cargado' la informacion obtenida de OpenWeather
             cargado = OpenWeather.obtener(txtInput.getText());
+            //Si no hubo problemas, se mostrara la informacion
             if (cargado != null) {
                 mostrarInformacion();
             } else {
@@ -72,7 +69,8 @@ public class Accion {
     }
 
     /**
-     * Muestra la informacion que se obtuvo de openwheatrer.
+     * Muestra la informacion que se obtuvo de openwheatrer en sus respectivos
+     * labels.
      */
     public void mostrarInformacion() {
         lblUbicacion.setText(cargado.getCiudad() + " " + cargado.getTiempo().getCountry());
@@ -85,24 +83,37 @@ public class Accion {
         lblMinTemp.setText(cargado.getInfo().getTempMin() + " °c");
         lblMaxTemp.setText(cargado.getInfo().getTempMax() + " °c");
         lblNubes.setText(cargado.getNubes().getAll() + "%");
-
         lblEstado.setText(cargado.getClima().get(0).getMain());
 
-        URL url = null;
+        mostrarIconoClima();
+        aplicarZonaHoraria();
+        cambiarFondo();
+    }
+
+    /**
+     * Carga el icono utilizando la API que nos proporciona openweather y la
+     * introducimos en un label como icono.
+     */
+    public void mostrarIconoClima() {
         try {
-            url = new URL("https://openweathermap.org/img/wn/" + cargado.getClima().get(0).getIcon() + "@2x.png");
+            URL url = new URL("https://openweathermap.org/img/wn/" + cargado.getClima().get(0).getIcon() + "@2x.png");
+            Image image = ImageIO.read(url);
+            icono.setIcon(new ImageIcon(image));
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Accion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Image image = null;
-        try {
-            image = ImageIO.read(url);
+            ex.printStackTrace();
         } catch (IOException ex) {
-            Logger.getLogger(Accion.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
+    }
 
-        icono.setIcon(new ImageIcon(image));
-
+    /**
+     * Sumamos la zona horaria con las horas proporcionada por OpenWeather y los
+     * tiempos en UNIX la multiplicamos por 1000
+     *
+     * Tambien mostramos la diferencia de horas dividiendo entre 60 dos veces la
+     * zona horaria.
+     */
+    public void aplicarZonaHoraria() {
         SimpleDateFormat formato = new SimpleDateFormat("HH:mm");
         formato.setTimeZone(TimeZone.getTimeZone("GMT"));
 
@@ -110,17 +121,25 @@ public class Accion {
         Date sunrise = new Date((cargado.getTiempo().getSunrise() * 1000) + (cargado.getZonahoraria() * 1000));
         Date sunset = new Date((cargado.getTiempo().getSunset() * 1000) + (cargado.getZonahoraria() * 1000));
         lblHoraLocal.setText(formato.format(ahora));
-        lblZonaHoraria.setText("(GMT " + (cargado.getZonahoraria() / 60 / 60) + ")");
-
         lblSalidaSol.setText(formato.format(sunrise));
         lblPuestaSol.setText(formato.format(sunset));
 
-        int ahoraHoras = Integer.valueOf(lblHoraLocal.getText().split(":")[0]);
+        lblZonaHoraria.setText("(GMT " + (cargado.getZonahoraria() / 60 / 60) + ")");
+    }
 
-        if (ahoraHoras <= 5) {
+    /**
+     * Cambiamos el fondo de color dependiendo de las horas que sea en la ciudad
+     * que se este mostrando
+     */
+    private void cambiarFondo() {
+        int ahoraHoras = Integer.valueOf(lblHoraLocal.getText().split(":")[0]);
+        int sunriseHoras = Integer.valueOf(lblSalidaSol.getText().split(":")[0]);
+//        int sunsetHoras = Integer.valueOf(lblPuestaSol.getText().split(":")[0]);
+
+        if (ahoraHoras <= sunriseHoras) {
             main.pnlInformacion.setColor1(new Color(33, 31, 112));
             main.pnlInformacion.setColor2(new Color(3, 0, 40));
-        } else if (ahoraHoras > 6 && ahoraHoras <= 8) {
+        } else if (ahoraHoras > sunriseHoras && ahoraHoras <= 8) {
             main.pnlInformacion.setColor1(new Color(243, 195, 0));
             main.pnlInformacion.setColor2(new Color(137, 36, 6));
         } else if (ahoraHoras > 8 && ahoraHoras <= 13) {
@@ -137,8 +156,11 @@ public class Accion {
             main.pnlInformacion.setColor2(new Color(3, 0, 40));
         }
 
+        /**
+         * Como es un JPanel personalizado, mando a llamar un metodo que hara
+         * que se redibuje el fondo con sus nuevos colores.
+         */
         main.pnlInformacion.actualizar();
-
     }
 
 }
