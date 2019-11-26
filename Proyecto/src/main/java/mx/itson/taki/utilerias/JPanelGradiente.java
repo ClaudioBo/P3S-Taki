@@ -7,6 +7,16 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 public class JPanelGradiente extends JPanel {
+    
+    /**
+     * Esta clase se extiende del JPanel, y el proposito de esta
+     * es solo dibujar el fondo con un degradado de 2 colores
+     * 
+     * Solo se sobre-escribe el metodo de dibujo en pantalla para mostrar dicho
+     * efecto
+     * 
+     * Lo hicimos gracias a unos videos en Youtube
+     */
 
     private Color color1;
     private Color color2;

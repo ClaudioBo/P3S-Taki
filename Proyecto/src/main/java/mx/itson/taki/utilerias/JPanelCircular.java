@@ -9,7 +9,17 @@ import java.util.TimerTask;
 import javax.swing.JPanel;
 
 public class JPanelCircular extends JPanel {
-
+    /**
+     * Esta clase se extiende del JPanel, y el proposito de esta
+     * es solo dibujar el fondo con un degradado de 2 colores
+     * 
+     * Tambien se guarda el tamaño del degradado y su posicion en X,Y
+     * 
+     * Solo se sobre-escribe el metodo de dibujo en pantalla para mostrar dicho
+     * efecto
+     * 
+     * Lo hicimos gracias a unos videos en Youtube
+     */
     private float gx = 0;
     private float gy = 0;
     private float radio = 1000;
