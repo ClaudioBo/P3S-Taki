@@ -50,7 +50,7 @@ public class OpenWeather {
     /**
      * Obtiene el nombre de la ciudad actual
      *
-     * @return
+     * @return el nombre de la ciudad
      */
     public String getCiudad() {
         return ciudad;
@@ -59,7 +59,7 @@ public class OpenWeather {
     /**
      * Cambia el nombre de la ciudad actual
      *
-     * @param ciudad
+     * @param ciudad Nombre de la ciudad nueva
      */
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
@@ -68,7 +68,7 @@ public class OpenWeather {
     /**
      * Obtiene los climas de la ciudad actual
      *
-     * @return
+     * @return Lista de los climas de la ciudad
      */
     public List<Clima> getClima() {
         return clima;
@@ -77,7 +77,7 @@ public class OpenWeather {
     /**
      * Cambia los climas de la ciudad actual
      *
-     * @param clima
+     * @param clima Lista nueva de los climas de la ciudad
      */
     public void setClima(List<Clima> clima) {
         this.clima = clima;
@@ -87,7 +87,7 @@ public class OpenWeather {
      * Obtener el conjunto de informacion sobre la presion atmosferica, la
      * temperatura y la humedad de la ciudad actual
      *
-     * @return
+     * @return Objecto que contiene presion atmosferica, temperatura y humedad
      */
     public Informacion getInfo() {
         return info;
@@ -97,7 +97,7 @@ public class OpenWeather {
      * Cambia el conjunto de informacion sobre la presion atmosferica, la
      * temperatura y la humedad de la ciudad actual
      *
-     * @param info
+     * @param info Objecto nuevo que contiene presion atmosferica, temperatura y humedad
      */
     public void setInfo(Informacion info) {
         this.info = info;
@@ -107,7 +107,7 @@ public class OpenWeather {
      * Obtener el conjunto de informacion sobre la velocidad del viendo y su
      * direccion de la ciudad actual
      *
-     * @return
+     * @return Objecto que contiene informacion sobre la vel. de viento y la direccion del viento
      */
     public Viento getViento() {
         return viento;
@@ -117,7 +117,7 @@ public class OpenWeather {
      * Cambia el conjunto de informacion sobre la velocidad del viendo y su
      * direccion de la ciudad actual
      *
-     * @param viento
+     * @param viento Objecto nuevo que contiene presion atmosferica, temperatura y humedad
      */
     public void setViento(Viento viento) {
         this.viento = viento;
@@ -127,7 +127,7 @@ public class OpenWeather {
      * Obtener el conjunto de informacion sobre el nombre del pais, cuando
      * amanecera y cuando anochecera de la ciudad actual.
      *
-     * @return
+     * @return Objecto que contiene nombre de pais, tiempo de amanecer y atardecer
      */
     public Tiempo getTiempo() {
         return tiempo;
@@ -137,7 +137,7 @@ public class OpenWeather {
      * Cambia el conjunto de informacion sobre el nombre del pais, cuando
      * amanecera y cuando anochecera de la ciudad actual.
      *
-     * @param tiempo
+     * @param tiempo Objecto nuevo que contiene nombre de pais, tiempo de amanecer y atardecer
      */
     public void setTiempo(Tiempo tiempo) {
         this.tiempo = tiempo;
@@ -147,7 +147,7 @@ public class OpenWeather {
      * Obtener el conjunto de informacion sobre el porcentaje de nubes de la
      * ciudad actual.
      *
-     * @return
+     * @return Objecto que contiene porcentaje de nubes
      */
     public Nubes getNubes() {
         return nubes;
@@ -157,7 +157,7 @@ public class OpenWeather {
      * Cambia el conjunto de informacion sobre el porcentaje de nubes de la
      * ciudad actual.
      *
-     * @param nubes
+     * @param nubes Objecto nuevoque contiene porcentaje de nubes
      */
     public void setNubes(Nubes nubes) {
         this.nubes = nubes;
@@ -167,7 +167,7 @@ public class OpenWeather {
      * Obtiene la diferencia en segundos sobre la ciudad actual y la medicion
      * "UTC".
      *
-     * @return
+     * @return Zona horaria en segundos
      */
     public long getZonahoraria() {
         return zonahoraria;
@@ -177,7 +177,7 @@ public class OpenWeather {
      * Cambia la diferencia en segundos sobre la ciudad actual y la medicion
      * "UTC".
      *
-     * @param zonahoraria
+     * @param zonahoraria Zona horaria nueva en segundos
      */
     public void setZonahoraria(long zonahoraria) {
         this.zonahoraria = zonahoraria;
