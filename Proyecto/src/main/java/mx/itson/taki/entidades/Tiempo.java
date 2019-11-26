@@ -1,7 +1,5 @@
 package mx.itson.taki.entidades;
 
-import java.util.Date;
-
 public class Tiempo {
 
     private String country;

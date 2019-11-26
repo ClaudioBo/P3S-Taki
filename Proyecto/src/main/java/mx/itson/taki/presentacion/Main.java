@@ -1,6 +1,5 @@
 package mx.itson.taki.presentacion;
 
-import java.awt.Color;
 import mx.itson.taki.acciones.Accion;
 
 public class Main extends javax.swing.JFrame {
